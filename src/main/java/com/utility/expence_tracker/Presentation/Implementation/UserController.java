@@ -8,16 +8,19 @@ import com.utility.expence_tracker.application.service.UserService;
 import com.utility.expence_tracker.domain.enums.ResponseMessages;
 import com.utility.expence_tracker.domain.enums.ResponseStatus;
 import com.utility.expence_tracker.infrastructure.annotation.LogRequestResponse;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequiredArgsConstructor
 public class UserController implements UserApis {
 
     private final UserService userService;
+
+    public UserController(@Qualifier("userServiceImpl") UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     @LogRequestResponse("Create new user")
