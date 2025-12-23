@@ -12,25 +12,19 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table("users")
-public class User {
+@Table("tag")
+public class Tag {
     
     @Id
     private String id;
     
-    @Column("telegram_id")
-    private String telegramId;
+    private String name;
+    private String description;
     
-    private String username;
+    @Column("user_id")
+    private String userId;
     
-    @Column("first_name")
-    private String firstName;
-    
-    @Column("last_name")
-    private String lastName;
-    
-    private String email;
-    private String password;
+    private String color;
     
     @Column("created_at")
     private LocalDateTime createdAt;

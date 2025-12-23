@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
 @Repository
-public interface UserRepository extends R2dbcRepository<User, Long> {
+public interface UserRepository extends R2dbcRepository<User, String> {
     
     Mono<User> findByTelegramId(String telegramId);
     
@@ -18,4 +18,6 @@ public interface UserRepository extends R2dbcRepository<User, Long> {
     
     @Query("DELETE FROM users WHERE telegram_id = :telegramId")
     Mono<Void> deleteByTelegramId(String telegramId);
+    
+    Mono<User> findByEmail(String email);
 }
